@@ -1,0 +1,90 @@
+[
+  {
+    "name": "Wahing Machine",
+    "brand": "Samsung",
+    "category": "Home Appliance",
+    "purchaseDate": "2026-10-04",
+    "purchasePrice": "75000",
+    "warrantyEnd": "",
+    "nextServiceDate": "",
+    "id": 1791118882000
+  },
+  {
+    "name": "TV",
+    "brand": "Samsung",
+    "category": "Home Appliance",
+    "purchaseDate": "2026-10-04",
+    "purchasePrice": "50000",
+    "warrantyEnd": "2026-10-21",
+    "nextServiceDate": "2026-10-31",
+    "id": 1791119128324
+  },
+  {
+    "name": "TV",
+    "brand": "Samsung",
+    "category": "Home Appliance",
+    "purchaseDate": "2026-10-04",
+    "purchasePrice": "50000",
+    "warrantyEnd": "2026-10-21",
+    "nextServiceDate": "2026-09-17",
+    "id": 1791119166991
+  },
+  {
+    "name": "Laptop",
+    "brand": "Dell",
+    "category": "Electronics",
+    "purchaseDate": "2026-10-04",
+    "purchasePrice": "70000",
+    "warrantyEnd": "2026-10-22",
+    "nextServiceDate": "2026-10-31",
+    "id": 1791120832791,
+    "invoice": {
+      "originalName": "Resume.pdf",
+      "savedName": "1791120832831_Resume.pdf",
+      "path": "invoices\\1791120832831_Resume.pdf"
+    }
+  },
+  {
+    "name": "Laptop",
+    "brand": "Dell",
+    "category": "Electronics",
+    "purchaseDate": "2026-10-04",
+    "purchasePrice": "70000",
+    "warrantyEnd": "2026-10-22",
+    "nextServiceDate": "2026-10-31",
+    "userId": 1791123099139,
+    "id": 1791123210414,
+    "services": [
+      {
+        "type": "Service",
+        "date": "2026-10-04",
+        "cost": "8000",
+        "notes": "display change "
+      }
+    ],
+    "invoice": null
+  },
+  {
+    "userId": 1791124417668,
+    "name": "Dell Laptop",
+    "brand": "Dell",
+    "category": "Laptop",
+    "purchaseDate": "2026-10-04",
+    "price": 70000,
+    "warrantyMonths": 6,
+    "warrantyEnd": "2027-04-04",
+    "serviceInterval": 6,
+    "nextService": "2027-04-04",
+    "serviceHistory": [],
+    "health": 100,
+    "id": 1791124547565,
+    "services": [
+      null
+    ],
+    "invoice": {
+      "originalName": "Resume.pdf",
+      "savedName": "1791124547595_Resume.pdf",
+      "path": "invoices\\1791124547595_Resume.pdf"
+    }
+  }
+]

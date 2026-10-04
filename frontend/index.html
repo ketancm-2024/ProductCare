@@ -1,0 +1,1404 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>ProductCare — Product Ownership Manager</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<!-- =========================================================
+     AUTH SCREEN
+========================================================= -->
+
+<div id="authScreen" class="auth-screen">
+
+    <div class="auth-brand">
+        <div class="brand-mark">P</div>
+
+        <div>
+            <h1>ProductCare</h1>
+            <p>Your Digital Product Ownership Manager</p>
+        </div>
+    </div>
+
+
+    <!-- LOGIN -->
+
+    <div class="auth-card" id="loginBox">
+
+        <div class="auth-heading">
+            <span class="eyebrow">WELCOME BACK</span>
+
+            <h2>Take control of<br>what you own.</h2>
+
+            <p>
+                Track warranties, services, invoices and product health
+                from one intelligent dashboard.
+            </p>
+        </div>
+
+        <form id="loginForm">
+
+            <div class="input-group">
+
+                <label>Email</label>
+
+                <input
+                    type="email"
+                    id="loginEmail"
+                    placeholder="you@example.com"
+                    required
+                >
+
+            </div>
+
+
+            <div class="input-group">
+
+                <label>Password</label>
+
+                <input
+                    type="password"
+                    id="loginPassword"
+                    placeholder="Enter your password"
+                    required
+                >
+
+            </div>
+
+
+            <button class="primary-btn full-btn" type="submit">
+                Sign in
+                <span>→</span>
+            </button>
+
+        </form>
+
+
+        <p class="auth-switch">
+            Don't have an account?
+            <button type="button" id="showSignup">Create one</button>
+        </p>
+
+    </div>
+
+
+    <!-- SIGNUP -->
+
+    <div class="auth-card hidden" id="signupBox">
+
+        <div class="auth-heading">
+
+            <span class="eyebrow">GET STARTED</span>
+
+            <h2>Build your<br>Product Passport.</h2>
+
+            <p>
+                One place for everything you own.
+            </p>
+
+        </div>
+
+
+        <form id="signupForm">
+
+            <div class="input-group">
+
+                <label>Full name</label>
+
+                <input
+                    type="text"
+                    id="signupName"
+                    placeholder="Your name"
+                    required
+                >
+
+            </div>
+
+
+            <div class="input-group">
+
+                <label>Email</label>
+
+                <input
+                    type="email"
+                    id="signupEmail"
+                    placeholder="you@example.com"
+                    required
+                >
+
+            </div>
+
+
+            <div class="input-group">
+
+                <label>Password</label>
+
+                <input
+                    type="password"
+                    id="signupPassword"
+                    placeholder="Create a password"
+                    required
+                >
+
+            </div>
+
+
+            <div class="input-group">
+
+                <label>Confirm password</label>
+
+                <input
+                    type="password"
+                    id="signupConfirmPassword"
+                    placeholder="Confirm password"
+                    required
+                >
+
+            </div>
+
+
+            <button class="primary-btn full-btn" type="submit">
+
+                Create account
+
+                <span>→</span>
+
+            </button>
+
+        </form>
+
+
+        <p class="auth-switch">
+
+            Already have an account?
+
+            <button type="button" id="showLogin">
+                Sign in
+            </button>
+
+        </p>
+
+    </div>
+
+
+    <div class="auth-footer">
+        ProductCare • Built for smarter ownership
+    </div>
+
+</div>
+
+
+<!-- =========================================================
+     MAIN APPLICATION
+========================================================= -->
+
+<div id="app" class="app hidden">
+
+
+    <!-- NAVBAR -->
+
+    <nav class="navbar">
+
+        <div class="nav-left">
+
+            <div class="brand">
+
+                <div class="brand-mark">
+                    P
+                </div>
+
+                <div>
+
+                    <strong>ProductCare</strong>
+
+                    <span>Ownership OS</span>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="nav-right">
+
+            <button
+                class="icon-btn"
+                id="themeBtn"
+                title="Toggle dark mode"
+            >
+                ◐
+            </button>
+
+
+            <div class="nav-user">
+
+                <div class="avatar" id="navAvatar">
+                    U
+                </div>
+
+                <div>
+
+                    <strong id="navUserName">
+                        User
+                    </strong>
+
+                    <span>Owner</span>
+
+                </div>
+
+            </div>
+
+
+            <button
+                class="logout-btn"
+                id="logoutBtn"
+            >
+                Logout
+            </button>
+
+        </div>
+
+    </nav>
+
+
+
+    <!-- =====================================================
+         DASHBOARD
+    ====================================================== -->
+
+    <main class="container">
+
+
+        <!-- HERO -->
+
+        <section class="hero">
+
+            <div class="hero-content">
+
+                <span class="eyebrow">
+                    YOUR OWNERSHIP DASHBOARD
+                </span>
+
+                <h1>
+                    Everything you own.
+                    <br>
+                    <span>Under control.</span>
+                </h1>
+
+                <p>
+                    ProductCare keeps your products, warranties,
+                    invoices, services and maintenance history
+                    organised in one intelligent place.
+                </p>
+
+
+                <div class="hero-actions">
+
+                    <button
+                        class="primary-btn"
+                        onclick="scrollToAddProduct()"
+                    >
+                        + Add Product
+                    </button>
+
+
+                    <button
+                        class="secondary-btn"
+                        onclick="openCommandGuide()"
+                    >
+                        Explore dashboard
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <div class="hero-visual">
+
+                <div class="orbit orbit-one"></div>
+                <div class="orbit orbit-two"></div>
+
+                <div class="hero-core">
+
+                    <div class="core-icon">
+                        ✓
+                    </div>
+
+                    <strong>
+                        Protected
+                    </strong>
+
+                    <span>
+                        Ownership
+                    </span>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =================================================
+             OWNERSHIP INSIGHT
+        ================================================== -->
+
+        <section class="insight-card">
+
+            <div class="insight-icon">
+                ✦
+            </div>
+
+            <div class="insight-content">
+
+                <span class="eyebrow">
+                    OWNERSHIP INSIGHT
+                </span>
+
+                <h3 id="ownershipInsight">
+                    Add your first product to unlock insights.
+                </h3>
+
+                <p>
+                    ProductCare analyses warranty coverage,
+                    service history and product health to help
+                    you make smarter ownership decisions.
+                </p>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =================================================
+             OWNERSHIP SCORE
+        ================================================== -->
+
+        <section class="score-section">
+
+            <div class="score-card">
+
+                <div class="score-left">
+
+                    <span class="eyebrow">
+                        OWNERSHIP SCORE
+                    </span>
+
+                    <h2 id="ownershipScore">
+                        0
+                    </h2>
+
+                    <p>
+                        Your overall product-care score
+                    </p>
+
+                </div>
+
+
+                <div class="score-ring">
+
+                    <svg viewBox="0 0 120 120">
+
+                        <circle
+                            class="score-bg"
+                            cx="60"
+                            cy="60"
+                            r="50"
+                        ></circle>
+
+                        <circle
+                            id="scoreCircle"
+                            class="score-progress"
+                            cx="60"
+                            cy="60"
+                            r="50"
+                        ></circle>
+
+                    </svg>
+
+                    <span id="scoreText">
+                        0%
+                    </span>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =================================================
+             STATS
+        ================================================== -->
+
+        <section class="stats-grid">
+
+
+            <div class="stat-card">
+
+                <div class="stat-icon purple">
+                    ▣
+                </div>
+
+                <div>
+
+                    <span>
+                        PRODUCTS
+                    </span>
+
+                    <strong id="totalProducts">
+                        0
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+            <div class="stat-card">
+
+                <div class="stat-icon green">
+                    ✓
+                </div>
+
+                <div>
+
+                    <span>
+                        ACTIVE WARRANTIES
+                    </span>
+
+                    <strong id="activeWarranties">
+                        0
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+            <div class="stat-card">
+
+                <div class="stat-icon orange">
+                    ◷
+                </div>
+
+                <div>
+
+                    <span>
+                        SERVICES DUE
+                    </span>
+
+                    <strong id="servicesDue">
+                        0
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+            <div class="stat-card">
+
+                <div class="stat-icon blue">
+                    ♥
+                </div>
+
+                <div>
+
+                    <span>
+                        AVG HEALTH
+                    </span>
+
+                    <strong id="averageHealth">
+                        0%
+                    </strong>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =================================================
+             ALERTS
+        ================================================== -->
+
+        <section class="section">
+
+            <div class="section-header">
+
+                <div>
+
+                    <span class="eyebrow">
+                        SMART ALERTS
+                    </span>
+
+                    <h2>
+                        Things that need attention
+                    </h2>
+
+                </div>
+
+                <span
+                    class="notification-badge"
+                    id="reminderCount"
+                >
+                    0
+                </span>
+
+            </div>
+
+
+            <div
+                class="reminders-grid"
+                id="reminders"
+            >
+
+                <div class="empty-state">
+
+                    <div class="empty-icon">
+                        ✓
+                    </div>
+
+                    <h3>
+                        You're all caught up
+                    </h3>
+
+                    <p>
+                        ProductCare will surface important
+                        warranty and service reminders here.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =================================================
+             ADD PRODUCT
+        ================================================== -->
+
+        <section
+            class="product-passport section"
+            id="addProductSection"
+        >
+
+            <div class="section-header">
+
+                <div>
+
+                    <span class="eyebrow">
+                        PRODUCT PASSPORT
+                    </span>
+
+                    <h2>
+                        Register a product
+                    </h2>
+
+                    <p>
+                        Give every product its own digital identity.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <form
+                id="productForm"
+                class="product-form"
+            >
+
+
+                <div class="form-grid">
+
+
+                    <div class="input-group">
+
+                        <label>
+                            Product name
+                        </label>
+
+                        <input
+                            id="productName"
+                            type="text"
+                            placeholder="e.g. iPhone 17"
+                            required
+                        >
+
+                    </div>
+
+
+                    <div class="input-group">
+
+                        <label>
+                            Brand
+                        </label>
+
+                        <input
+                            id="productBrand"
+                            type="text"
+                            placeholder="e.g. Apple"
+                            required
+                        >
+
+                    </div>
+
+
+                    <div class="input-group">
+
+                        <label>
+                            Category
+                        </label>
+
+                        <select
+                            id="productCategory"
+                            required
+                        >
+
+                            <option value="">
+                                Select category
+                            </option>
+
+                            <option value="Mobile">
+                                Mobile
+                            </option>
+
+                            <option value="Laptop">
+                                Laptop
+                            </option>
+
+                            <option value="TV">
+                                TV
+                            </option>
+
+                            <option value="Appliance">
+                                Appliance
+                            </option>
+
+                            <option value="Vehicle">
+                                Vehicle
+                            </option>
+
+                            <option value="Electronics">
+                                Electronics
+                            </option>
+
+                            <option value="Furniture">
+                                Furniture
+                            </option>
+
+                            <option value="Other">
+                                Other
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+                    <div class="input-group">
+
+                        <label>
+                            Purchase date
+                        </label>
+
+                        <input
+                            id="purchaseDate"
+                            type="date"
+                            required
+                        >
+
+                    </div>
+
+
+                    <div class="input-group">
+
+                        <label>
+                            Price
+                        </label>
+
+                        <input
+                            id="productPrice"
+                            type="number"
+                            placeholder="₹ 0"
+                            min="0"
+                            required
+                        >
+
+                    </div>
+
+
+                    <div class="input-group">
+
+                        <label>
+                            Warranty period
+                        </label>
+
+                        <select
+                            id="warrantyMonths"
+                            required
+                        >
+
+                            <option value="">
+                                Select warranty
+                            </option>
+
+                            <option value="6">
+                                6 months
+                            </option>
+
+                            <option value="12">
+                                1 year
+                            </option>
+
+                            <option value="24">
+                                2 years
+                            </option>
+
+                            <option value="36">
+                                3 years
+                            </option>
+
+                            <option value="60">
+                                5 years
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+                    <div class="input-group">
+
+                        <label>
+                            Service interval
+                        </label>
+
+                        <select
+                            id="serviceInterval"
+                        >
+
+                            <option value="0">
+                                No scheduled service
+                            </option>
+
+                            <option value="3">
+                                Every 3 months
+                            </option>
+
+                            <option value="6">
+                                Every 6 months
+                            </option>
+
+                            <option value="12">
+                                Every year
+                            </option>
+
+                            <option value="24">
+                                Every 2 years
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+                    <div class="input-group">
+
+                        <label>
+                            Invoice
+                        </label>
+
+                        <input
+                            id="invoiceFile"
+                            type="file"
+                            accept=".pdf,.jpg,.jpeg,.png"
+                        >
+
+                    </div>
+
+
+                </div>
+
+
+                <button
+                    class="primary-btn"
+                    type="submit"
+                >
+
+                    Create Product Passport
+
+                    <span>→</span>
+
+                </button>
+
+            </form>
+
+        </section>
+
+
+
+        <!-- =================================================
+             PRODUCTS
+        ================================================== -->
+
+        <section class="section">
+
+            <div class="section-header">
+
+                <div>
+
+                    <span class="eyebrow">
+                        MY PRODUCTS
+                    </span>
+
+                    <h2>
+                        Your ownership portfolio
+                    </h2>
+
+                </div>
+
+
+                <div class="product-tools">
+
+                    <input
+                        type="search"
+                        id="productSearch"
+                        placeholder="Search products..."
+                    >
+
+
+                    <select id="productFilter">
+
+                        <option value="all">
+                            All
+                        </option>
+
+                        <option value="healthy">
+                            Healthy
+                        </option>
+
+                        <option value="warranty">
+                            Under warranty
+                        </option>
+
+                        <option value="service">
+                            Service due
+                        </option>
+
+                    </select>
+
+                </div>
+
+            </div>
+
+
+            <div
+                class="products-grid"
+                id="products"
+            ></div>
+
+
+            <div
+                class="empty-state hidden"
+                id="productsEmpty"
+            >
+
+                <div class="empty-icon">
+                    +
+                </div>
+
+                <h3>
+                    No products yet
+                </h3>
+
+                <p>
+                    Add your first product and create its
+                    digital ownership passport.
+                </p>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =================================================
+             DIFFERENTIATOR
+        ================================================== -->
+
+        <section class="differentiator">
+
+            <div>
+
+                <span class="eyebrow">
+                    MORE THAN A WARRANTY TRACKER
+                </span>
+
+                <h2>
+                    ProductCare becomes the
+                    <span>memory of everything you own.</span>
+                </h2>
+
+                <p>
+                    Instead of simply reminding you when a
+                    warranty expires, ProductCare understands
+                    the complete lifecycle of your product.
+                </p>
+
+            </div>
+
+
+            <div class="feature-pills">
+
+                <span>
+                    Product Health
+                </span>
+
+                <span>
+                    Repair vs Replace
+                </span>
+
+                <span>
+                    Lifecycle Timeline
+                </span>
+
+                <span>
+                    Service History
+                </span>
+
+                <span>
+                    Invoice Vault
+                </span>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+
+    <!-- =====================================================
+         PRODUCT DETAILS MODAL
+    ====================================================== -->
+
+    <div
+        class="modal hidden"
+        id="detailsBox"
+    >
+
+        <div class="modal-overlay"></div>
+
+        <div class="modal-card">
+
+            <button
+                class="modal-close"
+                onclick="closeDetails()"
+            >
+                ×
+            </button>
+
+
+            <div class="detail-header">
+
+                <div
+                    class="detail-icon"
+                    id="detailIcon"
+                >
+                    📦
+                </div>
+
+                <div>
+
+                    <span
+                        class="eyebrow"
+                        id="detailCategory"
+                    >
+                        PRODUCT
+                    </span>
+
+                    <h2 id="detailName">
+                        Product
+                    </h2>
+
+                    <p id="detailBrand">
+                        Brand
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="health-panel">
+
+                <div>
+
+                    <span>
+                        PRODUCT HEALTH
+                    </span>
+
+                    <strong id="detailHealth">
+                        0%
+                    </strong>
+
+                </div>
+
+                <span
+                    id="detailHealthBadge"
+                    class="status-badge"
+                >
+                    Healthy
+                </span>
+
+            </div>
+
+
+            <div class="detail-grid">
+
+                <div class="detail-item">
+
+                    <span>
+                        Purchase price
+                    </span>
+
+                    <strong id="detailPrice">
+                        ₹0
+                    </strong>
+
+                </div>
+
+
+                <div class="detail-item">
+
+                    <span>
+                        Warranty
+                    </span>
+
+                    <strong id="detailWarranty">
+                        -
+                    </strong>
+
+                </div>
+
+
+                <div class="detail-item">
+
+                    <span>
+                        Next service
+                    </span>
+
+                    <strong id="detailService">
+                        -
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+            <div id="invoiceSection"></div>
+
+
+            <div class="analyzer">
+
+                <div class="section-mini">
+
+                    <span class="eyebrow">
+                        DECISION SUPPORT
+                    </span>
+
+                    <h3>
+                        Repair or replace?
+                    </h3>
+
+                </div>
+
+
+                <div id="analyzerBox">
+
+                    <div class="analyzer-inputs">
+
+                        <div class="input-group">
+
+                            <label>
+                                Current repair cost
+                            </label>
+
+                            <input
+                                id="repairCost"
+                                type="number"
+                                placeholder="₹"
+                            >
+
+                        </div>
+
+
+                        <div class="input-group">
+
+                            <label>
+                                Previous repair cost
+                            </label>
+
+                            <input
+                                id="previousRepairCost"
+                                type="number"
+                                placeholder="₹"
+                            >
+
+                        </div>
+
+
+                        <div class="input-group">
+
+                            <label>
+                                Replacement cost
+                            </label>
+
+                            <input
+                                id="replacementCost"
+                                type="number"
+                                placeholder="₹"
+                            >
+
+                        </div>
+
+                    </div>
+
+
+                    <button
+                        class="secondary-btn"
+                        onclick="analyzeRepair()"
+                    >
+                        Analyse decision
+                    </button>
+
+
+                    <div
+                        id="analysisResult"
+                        class="analysis-result"
+                    ></div>
+
+                </div>
+
+            </div>
+
+
+            <!-- SERVICE HISTORY -->
+
+            <div class="service-section">
+
+                <div class="section-mini">
+
+                    <span class="eyebrow">
+                        MAINTENANCE
+                    </span>
+
+                    <h3>
+                        Add service record
+                    </h3>
+
+                </div>
+
+
+                <form id="serviceForm">
+
+                    <div class="service-grid">
+
+                        <select id="serviceType">
+
+                            <option value="Routine Service">
+                                Routine Service
+                            </option>
+
+                            <option value="Repair">
+                                Repair
+                            </option>
+
+                            <option value="Maintenance">
+                                Maintenance
+                            </option>
+
+                            <option value="Inspection">
+                                Inspection
+                            </option>
+
+                        </select>
+
+
+                        <input
+                            id="serviceDate"
+                            type="date"
+                            required
+                        >
+
+
+                        <input
+                            id="serviceCost"
+                            type="number"
+                            placeholder="Cost"
+                        >
+
+
+                        <input
+                            id="serviceNotes"
+                            type="text"
+                            placeholder="Notes"
+                        >
+
+                    </div>
+
+
+                    <button
+                        class="primary-btn"
+                        type="submit"
+                    >
+                        Save service
+                    </button>
+
+                </form>
+
+
+                <div
+                    id="serviceHistory"
+                    class="service-history"
+                ></div>
+
+            </div>
+
+
+            <!-- LIFECYCLE -->
+
+            <div class="lifecycle-section">
+
+                <div class="section-mini">
+
+                    <span class="eyebrow">
+                        PRODUCT LIFECYCLE
+                    </span>
+
+                    <h3>
+                        Your product journey
+                    </h3>
+
+                </div>
+
+
+                <div
+                    id="productLifecycle"
+                    class="lifecycle"
+                ></div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- =====================================================
+         COMMAND PALETTE
+    ====================================================== -->
+
+    <div
+        class="command-palette hidden"
+        id="commandPalette"
+    >
+
+        <div class="command-overlay"></div>
+
+        <div class="command-box">
+
+            <div class="command-search">
+
+                <span>
+                    ⌕
+                </span>
+
+                <input
+                    id="commandSearch"
+                    placeholder="Search actions..."
+                >
+
+                <kbd>
+                    ESC
+                </kbd>
+
+            </div>
+
+
+            <div
+                id="commandList"
+                class="command-list"
+            >
+
+                <button
+                    onclick="scrollToAddProduct()"
+                >
+                    <span>＋</span>
+                    Add a product
+                </button>
+
+                <button
+                    onclick="focusProductSearch()"
+                >
+                    <span>⌕</span>
+                    Search products
+                </button>
+
+                <button
+                    onclick="toggleTheme()"
+                >
+                    <span>◐</span>
+                    Toggle dark mode
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- =====================================================
+         TOASTS
+    ====================================================== -->
+
+    <div
+        id="toastContainer"
+        class="toast-container"
+    ></div>
+
+
+</div>
+
+
+<script src="script.js"></script>
+
+</body>
+</html>
