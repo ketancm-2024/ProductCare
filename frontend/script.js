@@ -8,7 +8,7 @@
    CONFIG
 ========================================================= */
 
-const API = "http://localhost:5000";
+const API = "https://productcare-backend.onrender.com";
 
 let currentUser = null;
 let products = [];
