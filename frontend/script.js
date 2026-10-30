@@ -44,46 +44,18 @@ document.addEventListener("DOMContentLoaded", () => {
 ========================================================= */
 
 function initializeAuth() {
+    currentUser = {
+        id: "productcare_guest",
+        name: "ProductCare User",
+        email: "guest@productcare.local"
+    };
 
-    const savedUser = localStorage.getItem("productcare_user");
+    localStorage.setItem(
+        "productcare_user",
+        JSON.stringify(currentUser)
+    );
 
-    if (savedUser) {
-
-        try {
-
-            currentUser = JSON.parse(savedUser);
-
-            if (currentUser && currentUser.id) {
-
-                showApp();
-
-                return;
-
-            }
-
-        } catch (error) {
-
-            console.error("Saved user data is invalid.");
-
-        }
-
-    }
-
-    showAuth();
-
-}
-
-
-/* =========================================================
-   SHOW AUTH
-========================================================= */
-
-function showAuth() {
-
-    $("authScreen").classList.remove("hidden");
-
-    $("app").classList.add("hidden");
-
+    showApp();
 }
 
 
@@ -92,15 +64,9 @@ function showAuth() {
 ========================================================= */
 
 function showApp() {
-
-    $("authScreen").classList.add("hidden");
-
     $("app").classList.remove("hidden");
-
     updateUserUI();
-
     loadProducts();
-
 }
 
 
@@ -140,366 +106,19 @@ function updateUserUI() {
 
 
 /* =========================================================
-   AUTH FORMS
+   FORMS
 ========================================================= */
 
 function initializeForms() {
-
-
-    /* -------------------------
-       SHOW SIGNUP
-    ------------------------- */
-
-    $("showSignup")?.addEventListener("click", () => {
-
-        $("loginBox").classList.add("hidden");
-
-        $("signupBox").classList.remove("hidden");
-
-    });
-
-
-    /* -------------------------
-       SHOW LOGIN
-    ------------------------- */
-
-    $("showLogin")?.addEventListener("click", () => {
-
-        $("signupBox").classList.add("hidden");
-
-        $("loginBox").classList.remove("hidden");
-
-    });
-
-
-    /* -------------------------
-       LOGIN
-    ------------------------- */
-
-    $("loginForm")?.addEventListener(
-        "submit",
-        handleLogin
-    );
-
-
-    /* -------------------------
-       SIGNUP
-    ------------------------- */
-
-    $("signupForm")?.addEventListener(
-        "submit",
-        handleSignup
-    );
-
-
-    /* -------------------------
-       LOGOUT
-    ------------------------- */
-
-    $("logoutBtn")?.addEventListener(
-        "click",
-        logout
-    );
-
-
-    /* -------------------------
-       PRODUCT
-    ------------------------- */
-
     $("productForm")?.addEventListener(
         "submit",
         handleAddProduct
     );
 
-
-    /* -------------------------
-       SERVICE
-    ------------------------- */
-
     $("serviceForm")?.addEventListener(
         "submit",
         handleAddService
     );
-
-}
-
-
-/* =========================================================
-   SIGNUP
-========================================================= */
-
-async function handleSignup(event) {
-
-    event.preventDefault();
-
-
-    const name =
-        $("signupName").value.trim();
-
-    const email =
-        $("signupEmail").value.trim();
-
-    const password =
-        $("signupPassword").value;
-
-    const confirmPassword =
-        $("signupConfirmPassword").value;
-
-
-    if (!name || !email || !password) {
-
-        showToast(
-            "Please fill all required fields.",
-            "error"
-        );
-
-        return;
-    }
-
-
-    if (password !== confirmPassword) {
-
-        showToast(
-            "Passwords do not match.",
-            "error"
-        );
-
-        return;
-    }
-
-
-    if (password.length < 6) {
-
-        showToast(
-            "Password must contain at least 6 characters.",
-            "error"
-        );
-
-        return;
-    }
-
-
-    try {
-
-        const response = await fetch(
-            `${API}/api/auth/signup`,
-            {
-                method: "POST",
-
-                headers: {
-                    "Content-Type": "application/json"
-                },
-
-                body: JSON.stringify({
-                    name,
-                    email,
-                    password
-                })
-            }
-        );
-
-
-        const data = await response.json();
-
-
-        if (!response.ok) {
-
-            throw new Error(
-                data.message ||
-                data.error ||
-                "Signup failed."
-            );
-
-        }
-
-
-        showToast(
-            "Account created successfully.",
-            "success"
-        );
-
-
-        $("signupForm").reset();
-
-
-        $("signupBox").classList.add("hidden");
-
-        $("loginBox").classList.remove("hidden");
-
-
-        $("loginEmail").value = email;
-
-
-    } catch (error) {
-
-        console.error(error);
-
-        showToast(
-            error.message ||
-            "Unable to create account.",
-            "error"
-        );
-
-    }
-
-}
-
-
-/* =========================================================
-   LOGIN
-========================================================= */
-
-async function handleLogin(event) {
-
-    event.preventDefault();
-
-
-    const email =
-        $("loginEmail").value.trim();
-
-    const password =
-        $("loginPassword").value;
-
-
-    if (!email || !password) {
-
-        showToast(
-            "Enter your email and password.",
-            "error"
-        );
-
-        return;
-    }
-
-
-    try {
-
-        const response = await fetch(
-            `${API}/api/auth/login`,
-            {
-                method: "POST",
-
-                headers: {
-                    "Content-Type": "application/json"
-                },
-
-                body: JSON.stringify({
-                    email,
-                    password
-                })
-            }
-        );
-
-
-        const data = await response.json();
-
-
-        if (!response.ok) {
-
-            throw new Error(
-                data.message ||
-                data.error ||
-                "Invalid login credentials."
-            );
-
-        }
-
-
-        /*
-         Backend may return:
-
-         {
-            user: {...}
-         }
-
-         or directly:
-
-         {
-            id,
-            name,
-            email
-         }
-        */
-
-        currentUser =
-            data.user ||
-            data;
-
-
-        if (!currentUser.id) {
-
-            throw new Error(
-                "Login response did not contain a user ID."
-            );
-
-        }
-
-
-        localStorage.setItem(
-            "productcare_user",
-            JSON.stringify(currentUser)
-        );
-
-
-        $("loginForm").reset();
-
-
-        showToast(
-            "Welcome back to ProductCare.",
-            "success"
-        );
-
-
-        showApp();
-
-
-    } catch (error) {
-
-        console.error(error);
-
-        showToast(
-            error.message ||
-            "Unable to login.",
-            "error"
-        );
-
-    }
-
-}
-
-
-/* =========================================================
-   LOGOUT
-========================================================= */
-
-function logout() {
-
-    currentUser = null;
-
-    products = [];
-
-    selectedProduct = null;
-
-    localStorage.removeItem(
-        "productcare_user"
-    );
-
-
-    $("app").classList.add("hidden");
-
-    $("authScreen").classList.remove("hidden");
-
-
-    $("loginForm")?.reset();
-
-    $("signupForm")?.reset();
-
-
-    showToast(
-        "You have been logged out.",
-        "success"
-    );
-
 }
 
 
@@ -600,7 +219,7 @@ async function handleAddProduct(event) {
     if (!currentUser || !currentUser.id) {
 
         showToast(
-            "Please login first.",
+            "Unable to identify this local demo session.",
             "error"
         );
 
@@ -741,7 +360,7 @@ async function handleAddProduct(event) {
          or
 
          {
-             product: createdProduct
+              product: createdProduct
          }
         */
 

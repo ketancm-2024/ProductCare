@@ -17,194 +17,10 @@
 <body>
 
 <!-- =========================================================
-     AUTH SCREEN
-========================================================= -->
-
-<div id="authScreen" class="auth-screen">
-
-    <div class="auth-brand">
-        <div class="brand-mark">P</div>
-
-        <div>
-            <h1>ProductCare</h1>
-            <p>Your Digital Product Ownership Manager</p>
-        </div>
-    </div>
-
-
-    <!-- LOGIN -->
-
-    <div class="auth-card" id="loginBox">
-
-        <div class="auth-heading">
-            <span class="eyebrow">WELCOME BACK</span>
-
-            <h2>Take control of<br>what you own.</h2>
-
-            <p>
-                Track warranties, services, invoices and product health
-                from one intelligent dashboard.
-            </p>
-        </div>
-
-        <form id="loginForm">
-
-            <div class="input-group">
-
-                <label>Email</label>
-
-                <input
-                    type="email"
-                    id="loginEmail"
-                    placeholder="you@example.com"
-                    required
-                >
-
-            </div>
-
-
-            <div class="input-group">
-
-                <label>Password</label>
-
-                <input
-                    type="password"
-                    id="loginPassword"
-                    placeholder="Enter your password"
-                    required
-                >
-
-            </div>
-
-
-            <button class="primary-btn full-btn" type="submit">
-                Sign in
-                <span>→</span>
-            </button>
-
-        </form>
-
-
-        <p class="auth-switch">
-            Don't have an account?
-            <button type="button" id="showSignup">Create one</button>
-        </p>
-
-    </div>
-
-
-    <!-- SIGNUP -->
-
-    <div class="auth-card hidden" id="signupBox">
-
-        <div class="auth-heading">
-
-            <span class="eyebrow">GET STARTED</span>
-
-            <h2>Build your<br>Product Passport.</h2>
-
-            <p>
-                One place for everything you own.
-            </p>
-
-        </div>
-
-
-        <form id="signupForm">
-
-            <div class="input-group">
-
-                <label>Full name</label>
-
-                <input
-                    type="text"
-                    id="signupName"
-                    placeholder="Your name"
-                    required
-                >
-
-            </div>
-
-
-            <div class="input-group">
-
-                <label>Email</label>
-
-                <input
-                    type="email"
-                    id="signupEmail"
-                    placeholder="you@example.com"
-                    required
-                >
-
-            </div>
-
-
-            <div class="input-group">
-
-                <label>Password</label>
-
-                <input
-                    type="password"
-                    id="signupPassword"
-                    placeholder="Create a password"
-                    required
-                >
-
-            </div>
-
-
-            <div class="input-group">
-
-                <label>Confirm password</label>
-
-                <input
-                    type="password"
-                    id="signupConfirmPassword"
-                    placeholder="Confirm password"
-                    required
-                >
-
-            </div>
-
-
-            <button class="primary-btn full-btn" type="submit">
-
-                Create account
-
-                <span>→</span>
-
-            </button>
-
-        </form>
-
-
-        <p class="auth-switch">
-
-            Already have an account?
-
-            <button type="button" id="showLogin">
-                Sign in
-            </button>
-
-        </p>
-
-    </div>
-
-
-    <div class="auth-footer">
-        ProductCare • Built for smarter ownership
-    </div>
-
-</div>
-
-
-<!-- =========================================================
      MAIN APPLICATION
 ========================================================= -->
 
-<div id="app" class="app hidden">
-
+<div id="app" class="app">
 
     <!-- NAVBAR -->
 
@@ -219,17 +35,13 @@
                 </div>
 
                 <div>
-
                     <strong>ProductCare</strong>
-
                     <span>Ownership OS</span>
-
                 </div>
 
             </div>
 
         </div>
-
 
         <div class="nav-right">
 
@@ -241,7 +53,6 @@
                 ◐
             </button>
 
-
             <div class="nav-user">
 
                 <div class="avatar" id="navAvatar">
@@ -249,37 +60,23 @@
                 </div>
 
                 <div>
-
                     <strong id="navUserName">
                         User
                     </strong>
-
                     <span>Owner</span>
-
                 </div>
 
             </div>
 
-
-            <button
-                class="logout-btn"
-                id="logoutBtn"
-            >
-                Logout
-            </button>
-
         </div>
 
     </nav>
-
-
 
     <!-- =====================================================
          DASHBOARD
     ====================================================== -->
 
     <main class="container">
-
 
         <!-- HERO -->
 
@@ -303,7 +100,6 @@
                     organised in one intelligent place.
                 </p>
 
-
                 <div class="hero-actions">
 
                     <button
@@ -312,7 +108,6 @@
                     >
                         + Add Product
                     </button>
-
 
                     <button
                         class="secondary-btn"
@@ -324,7 +119,6 @@
                 </div>
 
             </div>
-
 
             <div class="hero-visual">
 
@@ -350,8 +144,6 @@
             </div>
 
         </section>
-
-
 
         <!-- =================================================
              OWNERSHIP INSIGHT
@@ -383,8 +175,6 @@
 
         </section>
 
-
-
         <!-- =================================================
              OWNERSHIP SCORE
         ================================================== -->
@@ -408,7 +198,6 @@
                     </p>
 
                 </div>
-
 
                 <div class="score-ring">
 
@@ -441,14 +230,11 @@
 
         </section>
 
-
-
         <!-- =================================================
              STATS
         ================================================== -->
 
         <section class="stats-grid">
-
 
             <div class="stat-card">
 
@@ -470,7 +256,6 @@
 
             </div>
 
-
             <div class="stat-card">
 
                 <div class="stat-icon green">
@@ -491,7 +276,6 @@
 
             </div>
 
-
             <div class="stat-card">
 
                 <div class="stat-icon orange">
@@ -511,7 +295,6 @@
                 </div>
 
             </div>
-
 
             <div class="stat-card">
 
@@ -534,8 +317,6 @@
             </div>
 
         </section>
-
-
 
         <!-- =================================================
              ALERTS
@@ -566,7 +347,6 @@
 
             </div>
 
-
             <div
                 class="reminders-grid"
                 id="reminders"
@@ -592,8 +372,6 @@
             </div>
 
         </section>
-
-
 
         <!-- =================================================
              ADD PRODUCT
@@ -624,15 +402,12 @@
 
             </div>
 
-
             <form
                 id="productForm"
                 class="product-form"
             >
 
-
                 <div class="form-grid">
-
 
                     <div class="input-group">
 
@@ -649,7 +424,6 @@
 
                     </div>
 
-
                     <div class="input-group">
 
                         <label>
@@ -664,7 +438,6 @@
                         >
 
                     </div>
-
 
                     <div class="input-group">
 
@@ -717,7 +490,6 @@
 
                     </div>
 
-
                     <div class="input-group">
 
                         <label>
@@ -731,7 +503,6 @@
                         >
 
                     </div>
-
 
                     <div class="input-group">
 
@@ -748,7 +519,6 @@
                         >
 
                     </div>
-
 
                     <div class="input-group">
 
@@ -789,7 +559,6 @@
 
                     </div>
 
-
                     <div class="input-group">
 
                         <label>
@@ -824,7 +593,6 @@
 
                     </div>
 
-
                     <div class="input-group">
 
                         <label>
@@ -839,9 +607,7 @@
 
                     </div>
 
-
                 </div>
-
 
                 <button
                     class="primary-btn"
@@ -857,8 +623,6 @@
             </form>
 
         </section>
-
-
 
         <!-- =================================================
              PRODUCTS
@@ -880,7 +644,6 @@
 
                 </div>
 
-
                 <div class="product-tools">
 
                     <input
@@ -888,7 +651,6 @@
                         id="productSearch"
                         placeholder="Search products..."
                     >
-
 
                     <select id="productFilter">
 
@@ -914,12 +676,10 @@
 
             </div>
 
-
             <div
                 class="products-grid"
                 id="products"
             ></div>
-
 
             <div
                 class="empty-state hidden"
@@ -942,8 +702,6 @@
             </div>
 
         </section>
-
-
 
         <!-- =================================================
              DIFFERENTIATOR
@@ -969,7 +727,6 @@
                 </p>
 
             </div>
-
 
             <div class="feature-pills">
 
@@ -999,8 +756,6 @@
 
     </main>
 
-
-
     <!-- =====================================================
          PRODUCT DETAILS MODAL
     ====================================================== -->
@@ -1020,7 +775,6 @@
             >
                 ×
             </button>
-
 
             <div class="detail-header">
 
@@ -1052,7 +806,6 @@
 
             </div>
 
-
             <div class="health-panel">
 
                 <div>
@@ -1076,7 +829,6 @@
 
             </div>
 
-
             <div class="detail-grid">
 
                 <div class="detail-item">
@@ -1091,7 +843,6 @@
 
                 </div>
 
-
                 <div class="detail-item">
 
                     <span>
@@ -1103,7 +854,6 @@
                     </strong>
 
                 </div>
-
 
                 <div class="detail-item">
 
@@ -1119,9 +869,7 @@
 
             </div>
 
-
             <div id="invoiceSection"></div>
-
 
             <div class="analyzer">
 
@@ -1136,7 +884,6 @@
                     </h3>
 
                 </div>
-
 
                 <div id="analyzerBox">
 
@@ -1156,7 +903,6 @@
 
                         </div>
 
-
                         <div class="input-group">
 
                             <label>
@@ -1170,7 +916,6 @@
                             >
 
                         </div>
-
 
                         <div class="input-group">
 
@@ -1188,14 +933,12 @@
 
                     </div>
 
-
                     <button
                         class="secondary-btn"
                         onclick="analyzeRepair()"
                     >
                         Analyse decision
                     </button>
-
 
                     <div
                         id="analysisResult"
@@ -1205,7 +948,6 @@
                 </div>
 
             </div>
-
 
             <!-- SERVICE HISTORY -->
 
@@ -1222,7 +964,6 @@
                     </h3>
 
                 </div>
-
 
                 <form id="serviceForm">
 
@@ -1248,20 +989,17 @@
 
                         </select>
 
-
                         <input
                             id="serviceDate"
                             type="date"
                             required
                         >
 
-
                         <input
                             id="serviceCost"
                             type="number"
                             placeholder="Cost"
                         >
-
 
                         <input
                             id="serviceNotes"
@@ -1270,7 +1008,6 @@
                         >
 
                     </div>
-
 
                     <button
                         class="primary-btn"
@@ -1281,14 +1018,12 @@
 
                 </form>
 
-
                 <div
                     id="serviceHistory"
                     class="service-history"
                 ></div>
 
             </div>
-
 
             <!-- LIFECYCLE -->
 
@@ -1306,7 +1041,6 @@
 
                 </div>
 
-
                 <div
                     id="productLifecycle"
                     class="lifecycle"
@@ -1317,8 +1051,6 @@
         </div>
 
     </div>
-
-
 
     <!-- =====================================================
          COMMAND PALETTE
@@ -1349,7 +1081,6 @@
                 </kbd>
 
             </div>
-
 
             <div
                 id="commandList"
@@ -1383,8 +1114,6 @@
 
     </div>
 
-
-
     <!-- =====================================================
          TOASTS
     ====================================================== -->
@@ -1394,9 +1123,7 @@
         class="toast-container"
     ></div>
 
-
 </div>
-
 
 <script src="script.js"></script>
 
